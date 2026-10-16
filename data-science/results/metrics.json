@@ -1,0 +1,60 @@
+{
+  "model_type": "RandomForestClassifier",
+  "n_test_samples": 84,
+  "accuracy": 0.8452,
+  "precision": 0.7895,
+  "recall": 0.8571,
+  "f1_score": 0.8219,
+  "confusion_matrix": {
+    "true_negative": 41,
+    "false_positive": 8,
+    "false_negative": 5,
+    "true_positive": 30
+  },
+  "classification_report": {
+    "0": {
+      "precision": 0.8913043478260869,
+      "recall": 0.8367346938775511,
+      "f1-score": 0.8631578947368421,
+      "support": 49.0
+    },
+    "1": {
+      "precision": 0.7894736842105263,
+      "recall": 0.8571428571428571,
+      "f1-score": 0.821917808219178,
+      "support": 35.0
+    },
+    "accuracy": 0.8452380952380952,
+    "macro avg": {
+      "precision": 0.8403890160183066,
+      "recall": 0.846938775510204,
+      "f1-score": 0.8425378514780101,
+      "support": 84.0
+    },
+    "weighted avg": {
+      "precision": 0.8488749046529366,
+      "recall": 0.8452380952380952,
+      "f1-score": 0.8459745253544823,
+      "support": 84.0
+    }
+  },
+  "feature_importance_ranking": {
+    "completion_percentage": 0.1995,
+    "deadline_pressure": 0.1483,
+    "pending_tasks": 0.1409,
+    "budget_utilization": 0.0678,
+    "workload_ratio": 0.0591,
+    "hour_variance": 0.0557,
+    "avg_workload": 0.052,
+    "completed_tasks": 0.0474,
+    "actual_hours": 0.0387,
+    "deadline_days_remaining": 0.0329,
+    "dependency_risk": 0.0328,
+    "previous_delays": 0.028,
+    "dependencies": 0.0265,
+    "total_tasks": 0.0242,
+    "estimated_hours": 0.0231,
+    "team_size": 0.0147,
+    "task_complexity": 0.0085
+  }
+}

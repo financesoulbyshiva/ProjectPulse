@@ -1,0 +1,321 @@
+/* ==========================================================================
+   NOVERAA PRODUCT EXPERIENCE — MOTION SYSTEM TOKENS & UTILITIES
+   Reference: Linear, Vercel, Stripe, Raycast, 21st.dev
+   Philosophy: Fast, Precise, Natural, Purposeful, Subtle, Responsive
+   ========================================================================== */
+
+:root {
+  /* Motion Durations */
+  --motion-micro: 180ms;       /* Hover, buttons, icons, badges, inputs */
+  --motion-component: 280ms;   /* Cards, dropdowns, modals, alerts, panels */
+  --motion-page: 420ms;        /* Dashboard entrance, major section reveals */
+
+  /* Easing Curves */
+  --ease-out-quad: cubic-bezier(0.16, 1, 0.3, 1);       /* Premium smooth entrance */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);      /* High-velocity deceleration */
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);      /* Subtle tactile response */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);          /* Standard state shifts */
+}
+
+/* --------------------------------------------------------------------------
+   Keyframe Animations
+   -------------------------------------------------------------------------- */
+
+@keyframes motionFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes motionSlideUpSmall {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motionSlideDownSmall {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motionScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes motionShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes motionPulseOnce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Motion Utility Classes
+   -------------------------------------------------------------------------- */
+
+/* Entrances */
+.animate-fade-in {
+  animation: motionFadeIn var(--motion-component) var(--ease-out-quad) forwards;
+}
+
+.animate-slide-up {
+  animation: motionSlideUpSmall var(--motion-page) var(--ease-out-quad) forwards;
+}
+
+.animate-modal-in {
+  animation: motionScaleIn var(--motion-component) var(--ease-out-quad) forwards;
+}
+
+/* Stagger Delays (40ms - 70ms step) */
+.stagger-1 {
+  animation-delay: 50ms;
+}
+
+.stagger-2 {
+  animation-delay: 110ms;
+}
+
+.stagger-3 {
+  animation-delay: 170ms;
+}
+
+.stagger-4 {
+  animation-delay: 230ms;
+}
+
+.stagger-5 {
+  animation-delay: 290ms;
+}
+
+.stagger-6 {
+  animation-delay: 350ms;
+}
+
+/* Interactive States */
+.motion-press {
+  transition: transform var(--motion-micro) var(--ease-out-quad),
+              background-color var(--motion-micro) ease,
+              border-color var(--motion-micro) ease,
+              box-shadow var(--motion-micro) ease;
+}
+
+.motion-press:active {
+  transform: scale(0.975);
+}
+
+.motion-card-hover {
+  transition: transform var(--motion-micro) var(--ease-out-quad),
+              box-shadow var(--motion-micro) var(--ease-out-quad),
+              border-color var(--motion-micro) ease;
+}
+
+.motion-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  border-color: #cbd5e1;
+}
+
+/* Toast Animations (Mobile: bottom slide, Desktop: right slide) */
+@keyframes toastSlideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-toast {
+  animation: toastSlideInBottom 280ms var(--ease-out-quad) forwards;
+}
+
+@media (min-width: 640px) {
+  .animate-toast {
+    animation: toastSlideInRight 280ms var(--ease-out-quad) forwards;
+  }
+}
+
+/* Spatial Route Continuity */
+@keyframes spatialRouteEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spatialRouteEnterMobile {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spatial-page-enter {
+  animation: spatialRouteEnter var(--motion-page) var(--ease-out-quad) forwards;
+}
+
+@media (max-width: 639px) {
+  .spatial-page-enter {
+    animation: spatialRouteEnterMobile 240ms var(--ease-out-quad) forwards;
+  }
+}
+
+/* Data Flow Animation (Pipeline & Relationships) */
+@keyframes dataFlowBeam {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.data-flow-track {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-flow-track::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(37, 99, 235, 0.4) 50%,
+    transparent 100%
+  );
+  animation: dataFlowBeam 2.2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* Telemetry Beacon & Active Computational Pulse */
+@keyframes telemetryBeacon {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.15);
+  }
+}
+
+.telemetry-beacon {
+  animation: telemetryBeacon 1.2s infinite ease-in-out;
+}
+
+/* Shimmer Skeleton (Quiet, subtle, professional) */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f8fafc 0%,
+    #f1f5f9 50%,
+    #f8fafc 100%
+  );
+  background-size: 200% 100%;
+  animation: motionShimmer 2.4s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Accessibility (A11y Priority)
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .motion-card-hover:hover {
+    transform: none !important;
+  }
+
+  .motion-press:active {
+    transform: none !important;
+  }
+
+  .animate-slide-up,
+  .animate-fade-in,
+  .animate-modal-in,
+  .spatial-page-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .data-flow-track::after,
+  .telemetry-beacon {
+    animation: none !important;
+  }
+}
