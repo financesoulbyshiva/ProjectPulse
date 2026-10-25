@@ -261,14 +261,16 @@ def reset_password(req: schemas.ResetPasswordRequest, db: Session = Depends(get_
     )
 
 
+
 @router.get("/verification-config")
 def get_verification_config():
-    """Diagnostic endpoint to inspect active frontend URL configuration without exposing secrets."""
-    from ..services.email_service import get_smtp_config
-    cfg = get_smtp_config()
+    """Show email configuration status without exposing secrets."""
+    from ..services.email_service import get_email_config
+
+    cfg = get_email_config()
     return {
         "frontend_url": cfg["frontend_url"],
-        "email_host": cfg["host"],
-        "email_port": cfg["port"],
+        "email_provider": "Resend",
         "sender": cfg["sender"],
+        "email_configured": bool(cfg["api_key"] and cfg["sender"]),
     }
