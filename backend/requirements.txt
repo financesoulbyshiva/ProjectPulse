@@ -11,3 +11,4 @@ google-genai>=2.25.0
 joblib
 pandas
 scikit-learn
+resend
